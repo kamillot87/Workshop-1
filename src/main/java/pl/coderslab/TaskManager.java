@@ -8,6 +8,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -113,7 +114,12 @@ public class TaskManager {
         List<String> list = Files.readAllLines(Path.of(track));
         Scanner input = new Scanner(System.in);
         System.out.println("Set which task do you want to remove: ");
-        int positionToRemove = input.nextInt();
+        int positionToRemove= list.size()+1;
+        try {
+            positionToRemove = input.nextInt();
+        }catch (InputMismatchException b) {
+            System.out.println("You set wrong mark");
+        }
         PrintWriter newListWithoutRemovedFile = new PrintWriter(track);
         try {
             list.remove(positionToRemove);// nadpisujemy listę
@@ -124,6 +130,7 @@ public class TaskManager {
             newListWithoutRemovedFile.println(a);
         }
         newListWithoutRemovedFile.close();
+
     }
 }
 
