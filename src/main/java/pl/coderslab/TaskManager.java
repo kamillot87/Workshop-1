@@ -44,7 +44,7 @@ public class TaskManager {
             }
             if (menuButton.equalsIgnoreCase("exit")) break;
         }
-    } //główne menu zrobione
+    }
 
     public static void list(String track) throws IOException {
         String url = track;
@@ -53,7 +53,7 @@ public class TaskManager {
         for (int i = 0; i < list.size(); i++) {
             System.out.println(i + " : " + list.get(i));
         }
-    } // lista zrobiona
+    }
 
     public static void adder(String track) throws IOException {
         Scanner newData = new Scanner(System.in);
@@ -108,7 +108,7 @@ public class TaskManager {
         }
         dataToAdd.write(toAdd);
         dataToAdd.close();
-    } // dodawanie dodane
+    }
 
     public static void remover(String track) throws IOException {
         List<String> list = Files.readAllLines(Path.of(track));
@@ -130,7 +130,6 @@ public class TaskManager {
             newListWithoutRemovedFile.println(a);
         }
         newListWithoutRemovedFile.close();
-
     }
 }
 
